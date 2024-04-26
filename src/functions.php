@@ -7,7 +7,8 @@ function task1($array, $join) {
         echo($key);
         echo'</p>';
         } else {
-            return implode(", " , $array);
+            $onestring = implode(", " , $array);
+            return $onestring;
         }
     };
 };
@@ -75,6 +76,11 @@ function task5() {
     echo(str_replace('К', '', $string1));
     echo '</br>';
     echo(str_replace('Две', 'Три', $string2));
+};
+
+function task6($file) {
+    $data = file_get_contents($file);
+    echo($data);
 };
 
 ?>
