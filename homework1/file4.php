@@ -24,11 +24,10 @@ $opel = array(
 );
 
 $cars = array($bmw, $toyota, $opel);
+$cars_amount = count($cars);
 
-for ($i = 0; $i < count($cars); $i++) {
-    echo(
-        "CAR " . $cars[$i]['name'] . '</br>' . $cars[$i]['model'] . ' ' . $cars[$i]['speed'] . ' ' . $cars[$i]['doors'] . ' ' . $cars[$i]['year'] . '</br>'
-    );
-}
+foreach ($cars as $car) {
+    echo 'CAR ' . $car['name'] . '</br>' . $car['model'] . ' ' . $car['speed'] . ' ' . $car['doors'] . ' ' . $car['year'] . '</br>';
+};
 
 ?>
