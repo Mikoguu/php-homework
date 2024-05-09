@@ -1,11 +1,9 @@
 <?php
 
-function task1() 
+function createUsersList($names) 
 {
 
 $users = Array();
-$names = ["Katy", "Lidia", "Skyler", "Hanna", "Cindy"];
-$file = 'users.json';
 
 for($i = 1; $i <= 50; $i++) {
     $userData = Array(
@@ -16,21 +14,30 @@ for($i = 1; $i <= 50; $i++) {
     array_push($users, $userData);
 };
 
-file_put_contents($file, json_encode($users));
-$content = file_get_contents($file);
-$decoded_content = json_decode($content, true);
-
-$names = array_column($decoded_content, 'name');
-$unique_names_amount = array_count_values($names);
-
-$ages = array_column($decoded_content, 'age');
-$average_age = round(array_sum($ages) / count($ages), 0);
-
-return [
-    'unique_names_amount' => $unique_names_amount,
-    'average_age' => $average_age
-];
+return $users;
     
 };
 
+function createJSON($users, $file) 
+{
+    file_put_contents($file, json_encode($users));
+    return $file;
+};
+
+function getDecodedJSON($file)
+{
+    $content = file_get_contents($file);
+    return json_decode($content, true);
+};
+
+function getNamesCount($users) 
+{
+    $names = array_column($users, 'name');
+    return array_count_values($names);
+};
+
+function getAvgAge($users) {
+    $ages = array_column($users, 'age');
+    return round(array_sum($ages) / count($ages), 0);
+}
 ?>
